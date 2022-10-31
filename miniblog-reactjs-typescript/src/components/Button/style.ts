@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 export interface iStyledButtonProp {
   mode: "main" | "dark" | "outline" | "danger";
+  type: string;
+  disable?: boolean;
 }
 export const StyledButton = styled.button<iStyledButtonProp>`
   text-decoration: none;

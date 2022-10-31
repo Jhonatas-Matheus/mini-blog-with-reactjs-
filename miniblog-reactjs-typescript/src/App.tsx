@@ -18,15 +18,6 @@ function App() {
             <Route path="register" element={<Register />} />
           </Routes>
         </BrowserRouter>
-        {/* <h1>Testando</h1>
-        <Button mode="main">Main</Button>
-        <Button mode="dark">Dark</Button>
-        <Button mode="outline">OutLine</Button>
-        <Form>
-          <Input title="Name" placeholder="Aqui você escreve alguma coisa." />
-          <Input title="Idade" placeholder="Aqui você escreve alguma coisa." />
-          <Input title="Cidade" placeholder="Aqui você escreve alguma coisa." />
-        </Form> */}
       </StyledContainer>
     </div>
   );

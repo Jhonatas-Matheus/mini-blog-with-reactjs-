@@ -1,4 +1,5 @@
 import React from "react";
+import { Node } from "typescript";
 import { StyledInput } from "./style";
 
 type Props = {
@@ -7,8 +8,9 @@ type Props = {
   placeholder?: string;
   type?: React.HTMLInputTypeAttribute;
   required?: boolean;
-  onChange?: () => void;
+  onChange?: (e: any) => void;
   value?: string;
+  name: string;
 };
 
 const Input = ({
@@ -19,6 +21,7 @@ const Input = ({
   required,
   onChange,
   value,
+  name,
 }: Props) => {
   return (
     <StyledInput>
@@ -29,6 +32,7 @@ const Input = ({
         required={required}
         onChange={onChange}
         value={value}
+        name={name}
       />
     </StyledInput>
   );

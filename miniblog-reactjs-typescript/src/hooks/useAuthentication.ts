@@ -6,18 +6,19 @@ import {
   signOut,
 } from "firebase/auth";
 import { useState, useEffect } from "react";
+import { app } from "../firebase/config";
 interface iRegisterUserData {
-  displayName: string;
+  displayName?: string;
   email: string;
   password: string;
 }
 export const useAuthentication = () => {
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null | boolean>(null);
   const [loading, setLoading] = useState(false);
 
   const [cancelled, setCancelled] = useState(false);
 
-  const auth = getAuth();
+  const auth = getAuth(app);
 
   const checkIfIsCancelled = () => {
     if (cancelled) {
@@ -53,9 +54,11 @@ export const useAuthentication = () => {
           setError("Ocorreu um erro, por favor tenta mais tarde.");
         }
       }
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
+
   useEffect(() => {
     return () => setCancelled(true);
   }, []);
