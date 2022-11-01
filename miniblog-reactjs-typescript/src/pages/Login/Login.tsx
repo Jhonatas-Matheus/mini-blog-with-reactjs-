@@ -20,7 +20,11 @@ const Login = (props: Props) => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { user, loading: pageLoading } = useContext(UserContext);
-  const { login, error: authError, loading } = useAuthentication();
+  const {
+    login,
+    error: authError,
+    loading: loginLoading,
+  } = useAuthentication();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -60,9 +64,16 @@ const Login = (props: Props) => {
           onChange={(e) => setPassword(e.target.value)}
           name="Pssword"
         />
-        <Button mode="main" type="submit">
-          Entrar
-        </Button>
+        {loginLoading && (
+          <Button mode="main" type="submit" disabled>
+            Carregando...
+          </Button>
+        )}
+        {!loginLoading && (
+          <Button mode="main" type="submit">
+            Entrar
+          </Button>
+        )}
       </Form>
     </StyledContainerLogin>
   );

@@ -17,6 +17,7 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import { useContext, useEffect, useState } from "react";
 import { User } from "firebase/auth";
+import Header from "./components/Header/Header";
 function App() {
   const { user, setTrigger, trigger } = useContext(UserContext);
   const [currentUser, setCurrentUser] = useState<User | undefined | null>();
@@ -28,10 +29,12 @@ function App() {
     <div className="App">
       <StyledContainer>
         <BrowserRouter>
+          <Header />
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/" element={<Dashboard />} />
+            <Route path="/" element={<Navigate to="/dashboard" />} />
+            <Route path="/dashboard" element={<Dashboard />} />
             <Route path="*" element={<Dashboard />} />
           </Routes>
         </BrowserRouter>
