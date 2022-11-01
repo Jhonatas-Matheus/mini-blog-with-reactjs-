@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { StyledButton } from "./components/Button/style";
+import { UserProvider } from "./context/UserContext";
 import { GlobalStyle } from "./styles/global";
 
 const root = ReactDOM.createRoot(
@@ -9,7 +10,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <App />
+    <UserProvider>
+      <GlobalStyle />
+      <App />
+    </UserProvider>
   </React.StrictMode>
 );
